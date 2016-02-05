@@ -1,11 +1,4 @@
-.idea/.name
-.idea/compiler.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/workspace.xml
-.idea/copyright/profiles_settings.xml
-letterscounter.iml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/libraries/Maven__junit_junit_4_11.xml
-.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml
+.idea/*
+*.iml
+*.class
+target/*

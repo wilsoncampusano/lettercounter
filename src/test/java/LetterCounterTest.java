@@ -1,49 +1,67 @@
-import com.sun.tools.javac.util.StringUtils;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
-import static java.util.Objects.isNull;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by wilsoncampusano on 2/4/16.
- */
 public class LetterCounterTest {
 
     @Test
     public void oneBlankSpaceDontCount(){
+
         String blank = "";
 
-        assertThat(counter(blank), is(0));
+        LetterCounter counter =  new LetterCounter(blank);
+
+        assertThat(counter.occurences(), is(0));
     }
 
     @Test public void dontCountNull(){
+
         String nulll = null;
-        assertThat(counter(nulll), is(0));
+
+        LetterCounter counter = new LetterCounter(nulll);
+
+        assertThat(counter.occurences(), is(0));
     }
 
     @Test public void oneLetterCount(){
+
         String letter = "a";
-        assertThat(counter(letter), is(1));
+
+        LetterCounter counter = new LetterCounter(letter);
+
+        assertThat(counter.occurences(), is(1));
     }
 
     @Test
     public void twoLetter(){
+
         String letters = "aa";
-        assertThat(counter(letters), is(2));
+
+        LetterCounter counter = new LetterCounter(letters);
+
+        assertThat(counter.occurences(), is(1));
     }
 
-    private int counter(String blank) {
-        if(isNull(blank) || blank.equals(""))
-            return 0;
+    @Test
+    public void twoLetters(){
 
-        String[] letters = blank.split("");
-        int counter = 0;
+        String letters  = "bb";
 
-        for (String letter: letters)
-            if(letter.equals("a"))
-                counter++;
+        LetterCounter counter = new LetterCounter(letters);
 
-        return counter;
+        assertThat(counter.occurences(), is(1));
+    }
+
+    @Test @Ignore("need more dt")
+    public void countDiferentsLetters(){
+
+        String letters = "ab";
+
+        LetterCounter counter = new LetterCounter(letters);
+
+        assertThat(counter.occurences(), is(2));
     }
 }
