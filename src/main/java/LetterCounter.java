@@ -13,8 +13,8 @@ public class LetterCounter {
     public int occurences() {
         if(isNull(sentence) || sentence.equals(""))
             return 0;
-        String letter = sentence;
-        if(sentence.equals(letter) || sentence.equals("aa"))
+        String[] letters= sentence;
+        if(sentence.equals(letter) )
             return 1;
         return -1;
     }

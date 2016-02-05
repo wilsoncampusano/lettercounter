@@ -1,4 +1,3 @@
-
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -26,7 +25,7 @@ public class LetterCounterTest {
         assertThat(counter.occurences(), is(0));
     }
 
-    @Test public void oneLetterCount(){
+    @Test public void oneLetter(){
 
         String letter = "a";
 
@@ -36,7 +35,7 @@ public class LetterCounterTest {
     }
 
     @Test
-    public void twoLetter(){
+    public void twoLetters(){
 
         String letters = "aa";
 
@@ -46,13 +45,25 @@ public class LetterCounterTest {
     }
 
     @Test
-    public void twoLetters(){
+    public void anotherLetters(){
 
         String letters  = "bb";
 
         LetterCounter counter = new LetterCounter(letters);
 
         assertThat(counter.occurences(), is(1));
+    }
+
+    @Test
+    public void alternateLettersInSentence(){
+
+        String letters = "abababab";
+
+        LetterCounter counter = new LetterCounter(letters);
+
+        assertThat(counter.occurences(), is(2));
+
+
     }
 
     @Test @Ignore("need more dt")
