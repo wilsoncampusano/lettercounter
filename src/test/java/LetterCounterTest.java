@@ -27,11 +27,23 @@ public class LetterCounterTest {
         assertThat(counter(letter), is(1));
     }
 
+    @Test
+    public void twoLetter(){
+        String letters = "aa";
+        assertThat(counter(letters), is(2));
+    }
+
     private int counter(String blank) {
         if(isNull(blank) || blank.equals(""))
             return 0;
-        if(blank.equals("a"))
-            return 1;
-        return -1;
+
+        String[] letters = blank.split("");
+        int counter = 0;
+
+        for (String letter: letters)
+            if(letter.equals("a"))
+                counter++;
+
+        return counter;
     }
 }
