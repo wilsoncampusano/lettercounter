@@ -88,4 +88,20 @@ public class LetterCounterTest {
         assertThat(counter.countOf("x"), is(2) );
         assertThat(counter.countOf("z"), is(3) );
     }
+
+    @Test
+    public void printCountFormat(){
+        String name = "wilson";
+
+        LetterCounter counter = new LetterCounter(name);
+        counter.count();
+
+        assertThat(counter.print(),
+                    is("i : 1\n" +
+                    "l : 1\n" +
+                    "n : 1\n" +
+                    "o : 1\n" +
+                    "s : 1\n" +
+                    "w : 1\n")) ;
+    }
 }

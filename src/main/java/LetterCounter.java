@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 
@@ -54,5 +55,13 @@ public class LetterCounter {
 
     public Integer countOf(String letter) {
         return lettersFound.get(letter);
+    }
+
+    public String print() {
+        String output = "";
+        for (String letter: lettersFound.keySet().stream().sorted().collect(Collectors.<String>toList())) {
+            output += String.format("%s : %d\n",letter, lettersFound.get(letter));
+        }
+        return output;
     }
 }
