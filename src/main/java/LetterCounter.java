@@ -22,11 +22,12 @@ public class LetterCounter {
     }
 
     private void countAllLetters() {
-        for(String letter : sentence.split(""))
-            countThisLetter(letter);
+        String[] allTheLetters = sentence.split("");
+        for(String letter : allTheLetters)
+            countCurrentLetter(letter);
     }
 
-    private void countThisLetter(String letter) {
+    private void countCurrentLetter(String letter) {
         if(notAddedYet(letter))
             addLetter(letter);
         else
