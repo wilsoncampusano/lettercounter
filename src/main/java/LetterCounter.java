@@ -16,9 +16,13 @@ public class LetterCounter {
     }
 
     public void count() {
-        if(isNull(sentence) || sentence.equals(""))
+        if(nothinIsInSentence())
             throw new RuntimeException("Sentence null or empty");
         countAllLetters();
+    }
+
+    private boolean nothinIsInSentence() {
+        return isNull(sentence) || sentence.equals("");
     }
 
     private void countAllLetters() {
