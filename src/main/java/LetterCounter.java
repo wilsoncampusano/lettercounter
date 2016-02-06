@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.util.Objects.isNull;
 
 /**
@@ -5,17 +8,25 @@ import static java.util.Objects.isNull;
  */
 public class LetterCounter {
     private String sentence;
+    List<String> lettersFound;
 
     public LetterCounter(String sentence) {
         this.sentence = sentence;
+        this.lettersFound = new ArrayList<String>();
     }
 
-    public int occurences() {
+    public void count() {
+
         if(isNull(sentence) || sentence.equals(""))
-            return 0;
-        String[] letters= sentence;
-        if(sentence.equals(letter) )
-            return 1;
-        return -1;
+            throw new RuntimeException();
+
+        for(String letter : sentence.split(""))
+            if(!lettersFound.contains(letter))
+                lettersFound.add(letter);
+
+    }
+
+    public List<String> letters() {
+        return lettersFound;
     }
 }

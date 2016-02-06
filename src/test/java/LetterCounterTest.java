@@ -1,78 +1,52 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class LetterCounterTest {
 
     @Test
-    public void oneBlankSpaceDontCount(){
-
-        String blank = "";
-
-        LetterCounter counter =  new LetterCounter(blank);
-
-        assertThat(counter.occurences(), is(0));
-    }
-
-    @Test public void dontCountNull(){
-
-        String nulll = null;
-
-        LetterCounter counter = new LetterCounter(nulll);
-
-        assertThat(counter.occurences(), is(0));
-    }
-
-    @Test public void oneLetter(){
+    public void oneLetter() {
 
         String letter = "a";
 
         LetterCounter counter = new LetterCounter(letter);
+        counter.count();
 
-        assertThat(counter.occurences(), is(1));
+        assertThat(counter.letters(), hasItems("a"));
     }
 
     @Test
-    public void twoLetters(){
+    public void twoLetters() {
 
         String letters = "aa";
 
         LetterCounter counter = new LetterCounter(letters);
+        counter.count();
 
-        assertThat(counter.occurences(), is(1));
+        assertThat(counter.letters(), hasItems("a"));
     }
 
     @Test
-    public void anotherLetters(){
+    public void anotherLetters() {
 
-        String letters  = "bb";
+        String letters = "bb";
 
         LetterCounter counter = new LetterCounter(letters);
+        counter.count();
 
-        assertThat(counter.occurences(), is(1));
+        assertThat(counter.letters(), hasItems("b"));
     }
 
     @Test
-    public void alternateLettersInSentence(){
+    public void alternateLettersInSentence() {
 
         String letters = "abababab";
 
         LetterCounter counter = new LetterCounter(letters);
+        counter.count();
 
-        assertThat(counter.occurences(), is(2));
-
-
-    }
-
-    @Test @Ignore("need more dt")
-    public void countDiferentsLetters(){
-
-        String letters = "ab";
-
-        LetterCounter counter = new LetterCounter(letters);
-
-        assertThat(counter.occurences(), is(2));
+        assertThat(counter.letters(), hasItems("a", "b"));
     }
 }
