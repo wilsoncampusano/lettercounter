@@ -1,29 +1,36 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Objects.isNull;
 
 public class LetterCounter {
     private String sentence;
-    List<String> lettersFound;
+    private Map<String, Integer> lettersFound;
 
     public LetterCounter(String sentence) {
         this.sentence = sentence;
-        this.lettersFound = new ArrayList<String>();
+        this.lettersFound = new HashMap<String, Integer>();
     }
 
     public void count() {
 
         if(isNull(sentence) || sentence.equals(""))
-            throw new RuntimeException();
+            throw new RuntimeException("Sentence null or empty");
 
         for(String letter : sentence.split(""))
-            if(!lettersFound.contains(letter))
-                lettersFound.add(letter);
-
+            if(!lettersFound.keySet().contains(letter))
+                lettersFound.put(letter, 1);
+            else
+                lettersFound.put(letter, 1+lettersFound.get(letter).intValue());
     }
 
     public List<String> letters() {
-        return lettersFound;
+        return new ArrayList<String>(lettersFound.keySet());
+    }
+
+    public Integer countOf(String letter) {
+        return lettersFound.get(letter);
     }
 }
