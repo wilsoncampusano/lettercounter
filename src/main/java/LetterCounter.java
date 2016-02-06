@@ -15,15 +15,33 @@ public class LetterCounter {
     }
 
     public void count() {
-
         if(isNull(sentence) || sentence.equals(""))
             throw new RuntimeException("Sentence null or empty");
+        countAllLetters();
+    }
 
+    private void countAllLetters() {
         for(String letter : sentence.split(""))
-            if(!lettersFound.keySet().contains(letter))
-                lettersFound.put(letter, 1);
-            else
-                lettersFound.put(letter, incrementLetterCount(letter));
+            countThisLetter(letter);
+    }
+
+    private void countThisLetter(String letter) {
+        if(notAddedYet(letter))
+            addLetter(letter);
+        else
+            increment(letter);
+    }
+
+    private boolean notAddedYet(String letter) {
+        return !lettersFound.keySet().contains(letter);
+    }
+
+    private void addLetter(String letter) {
+        lettersFound.put(letter, 1);
+    }
+
+    private void increment(String letter) {
+        lettersFound.put(letter, incrementLetterCount(letter));
     }
 
     private Integer incrementLetterCount(String letter) {
