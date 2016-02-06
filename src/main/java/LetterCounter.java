@@ -23,7 +23,11 @@ public class LetterCounter {
             if(!lettersFound.keySet().contains(letter))
                 lettersFound.put(letter, 1);
             else
-                lettersFound.put(letter, 1+lettersFound.get(letter).intValue());
+                lettersFound.put(letter, incrementLetterCount(letter));
+    }
+
+    private Integer incrementLetterCount(String letter) {
+        return lettersFound.get(letter).intValue() + 1;
     }
 
     public List<String> letters() {

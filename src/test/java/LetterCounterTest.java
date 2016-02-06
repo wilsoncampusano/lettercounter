@@ -52,6 +52,7 @@ public class LetterCounterTest {
 
     @Test
     public void oneLetterCount(){
+
         String letter = "a";
 
         LetterCounter counter = new LetterCounter(letter);
@@ -63,6 +64,7 @@ public class LetterCounterTest {
 
     @Test
     public void twoLetterCount(){
+
         String letters = "aa";
 
         LetterCounter counter = new LetterCounter(letters);
@@ -74,6 +76,7 @@ public class LetterCounterTest {
 
     @Test
     public void canCountDifferentLetters(){
+
         String letters = "aabbxxzzz";
 
         LetterCounter counter = new LetterCounter(letters);
