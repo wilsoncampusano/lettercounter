@@ -16,12 +16,12 @@ public class LetterCounter {
     }
 
     public void count() {
-        if(nothinIsInSentence())
+        if(nothingIsInSentence())
             throw new RuntimeException("Sentence null or empty");
         countAllLetters();
     }
 
-    private boolean nothinIsInSentence() {
+    private boolean nothingIsInSentence() {
         return isNull(sentence) || sentence.equals("");
     }
 
@@ -64,9 +64,12 @@ public class LetterCounter {
 
     public String print() {
         String output = "";
-        for (String letter: lettersFound.keySet().stream().sorted().collect(Collectors.<String>toList())) {
-            output += String.format("%s : %d\n",letter, lettersFound.get(letter));
-        }
+        for (String letter: getLettersInAscendingOrder()) 
+            output += String.format("%s : %d\n", letter , lettersFound.get(letter));
         return output;
+    }
+
+    private List<String> getLettersInAscendingOrder() {
+        return lettersFound.keySet().stream().sorted().collect(Collectors.<String>toList());
     }
 }
